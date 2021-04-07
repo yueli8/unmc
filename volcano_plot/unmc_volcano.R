@@ -1,0 +1,40 @@
+library(data.table)
+library(limma)
+library(calibrate)
+
+#hcq_vs_con
+res <- read.csv("hcq_vs_con_deg.csv", header=TRUE)
+head(res)
+with(res, plot(log2FoldChange, -log10(padj), pch=20, main="Volcano plot", xlim=c(-6,6)))
+# Add colored points: red if padj<0.05, orange of log2FC>1, green if both)
+with(subset(res, padj<.05 ), points(log2FoldChange, -log10(padj), pch=20, col="red"))
+with(subset(res, abs(log2FoldChange)>1), points(log2FoldChange, -log10(padj), pch=20, col="orange"))
+with(subset(res, padj<.05 & abs(log2FoldChange)>1), points(log2FoldChange, -log10(padj), pch=20, col="green"))
+#with(subset(res, padj<.05 & abs(log2FC)>1), textxy(logFC, -log10(padj), labs=Gene, cex=.6))
+abline(h=1.3,v=1,lty=3)
+abline(v=-1,lty=3)
+
+
+#pcq_vs_con
+res <- read.csv("pcq_vs_con_deg.csv", header=TRUE)
+head(res)
+with(res, plot(log2FoldChange, -log10(padj), pch=20, main="Volcano plot", xlim=c(-6,6)))
+# Add colored points: red if padj<0.05, orange of log2FC>1, green if both)
+with(subset(res, padj<.05 ), points(log2FoldChange, -log10(padj), pch=20, col="red"))
+with(subset(res, abs(log2FoldChange)>1), points(log2FoldChange, -log10(padj), pch=20, col="orange"))
+with(subset(res, padj<.05 & abs(log2FoldChange)>1), points(log2FoldChange, -log10(padj), pch=20, col="green"))
+#with(subset(res, padj<.05 & abs(log2FC)>1), textxy(logFC, -log10(padj), labs=Gene, cex=.6))
+abline(h=1.3,v=1,lty=3)
+abline(v=-1,lty=3)
+
+#phpma_vs_con
+res <- read.csv("phpma_vs_con_deg.csv", header=TRUE)
+head(res)
+with(res, plot(log2FoldChange, -log10(padj), pch=20, main="Volcano plot", xlim=c(-6,6)))
+# Add colored points: red if padj<0.05, orange of log2FC>1, green if both)
+with(subset(res, padj<.05 ), points(log2FoldChange, -log10(padj), pch=20, col="red"))
+with(subset(res, abs(log2FoldChange)>1), points(log2FoldChange, -log10(padj), pch=20, col="orange"))
+with(subset(res, padj<.05 & abs(log2FoldChange)>1), points(log2FoldChange, -log10(padj), pch=20, col="green"))
+#with(subset(res, padj<.05 & abs(log2FC)>1), textxy(logFC, -log10(padj), labs=Gene, cex=.6))
+abline(h=1.3,v=1,lty=3)
+abline(v=-1,lty=3)
